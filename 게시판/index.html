@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="" id="title" placeholder="title">
+        <textarea name="" id="description" cols="30" rows="10" placeholder="description"></textarea>
+        <input id="add" type="button" value="Add" onclick="add()">
+    </div>
+    <hr class="hr1">
+
+    <div id="info">
+        <!-- <div class="box">
+            <div class="title">
+                <p onclick="view()">title</p>
+            </div>
+            <hr class="hr2">
+            <div class="description">
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam error recusandae ratione fugiat dolor provident laudantium ullam, assumenda consectetur ducimus, porro laborum est expedita corporis nostrum dignissimos deleniti neque nihil?</div>
+            </div>
+        </div> -->
+    </div>
+    <script>
+        
+        let list = []
+        function add() {
+            let title = document.querySelector("#title").value
+            let description = document.querySelector("#description").value
+            
+            list.push({title,description})
+            console.log("add")
+            show()
+        }
+        
+        function show() {
+            console.log("show")
+            let root = document.querySelector("#info")
+            root.innerHTML = ""
+            for (let i = 0; i < list.length; i++) {
+                root.innerHTML += `
+                <div class="box">
+                    <div class="title">
+                        <p onclick="view(${i})">
+                            ${list[[i]].title}    
+                        </p>
+                        </div>
+                        <hr class="hr2">
+                        <div class="description">
+                            <div>
+                                ${list[i].description}    
+                            </div>
+                        </div>
+                        <div class="controllBtn">
+                            <input type="button" value="edit" onclick="edit(${i})">
+                            <input type="button" value="delete" onclick="del(${i})">
+                    </div>
+                </div>
+                `
+            }
+        }
+    function del(id) {
+        list.splice(id, 1)
+        show()
+    }
+</script>
+</body>
+</html>
