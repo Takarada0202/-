@@ -24,7 +24,7 @@ body {
   justify-content: center;
   margin-top: 50px;
   width: 500px;
-  border: 2px solid rgb(90, 223, 223);
+  border: 2px solid rgb(137, 90, 223);
   border-radius: 5px;
   color: white;
 }
@@ -38,7 +38,7 @@ body {
 #title {
   width: 500px;
   height: 40px;
-  border: 2px solid aqua;
+  border: 2px solid rgb(137, 90, 223);
   border-radius: 10px;
   margin: 20px 0;
   background-color: rgb(61, 61, 61);
@@ -47,7 +47,7 @@ body {
 #description {
   width: 500px;
   resize: vertical;
-  border: 2px solid aqua;
+  border: 2px solid rgb(137, 90, 223);
   border-radius: 10px;
   margin: 10px 0;
   background-color: rgb(61, 61, 61);
@@ -56,13 +56,13 @@ body {
 #add {
   width: 500px;
   border-radius: 10px;
-  border: 2px solid aqua;
+  border: 2px solid rgb(137, 90, 223);
   background-color: rgb(61, 61, 61);
   color: white;
 }
 .controllBtn input {
   background-color: rgb(61, 61, 61);
-  border: 2px solid aqua;
+  border: 2px solid rgb(137, 90, 223);
   color: white;
   border-radius: 10px;
   width: 100px;
