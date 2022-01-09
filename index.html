@@ -26,9 +26,24 @@
             </div>
         </div> -->
     </div>
+    
+    
+    
+    
     <script>
+        const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('a'))
+        .split('=')[1];
         
-        let list = []
+        if(cookieValue == null) {
+            document.cookie = "a=[]"
+        }
+        
+
+        document.cookie = "a=" + ""
+        let list = JSON.parse(cookieValue)
+        show()
         function add() {
             let title = document.querySelector("#title").value
             let description = document.querySelector("#description").value
@@ -39,7 +54,7 @@
         }
         
         function show() {
-            console.log("show")
+            
             let root = document.querySelector("#info")
             root.innerHTML = ""
             for (let i = 0; i < list.length; i++) {
@@ -47,27 +62,67 @@
                 <div class="box">
                     <div class="title">
                         <p onclick="view(${i})">
-                            ${list[[i]].title}    
-                        </p>
-                        </div>
-                        <hr class="hr2">
-                        <div class="description">
-                            <div>
-                                ${list[i].description}    
+                            ${list[i].title}    
+                            </p>
                             </div>
+                            <hr class="hr2">
+                            <div class="description">
+                                <div>
+                                    ${list[i].description}    
+                                    </div>
+                                    </div>
+                                    <div class="updateArea">
+                                        <input type="text" class="updateTitle">
+                                        <textarea class="updateDescription"></textarea>
                         </div>
                         <div class="controllBtn">
-                            <input type="button" value="edit" onclick="edit(${i})">
-                            <input type="button" value="delete" onclick="del(${i})">
+                            <input type="button" value="edit" onclick="edit(${i});">
+                            <input type="button" value="delete" onclick="del(${i});" >
+                        </div>
                     </div>
                 </div>
                 `
             }
+            console.log("show") 
+            document.cookie = "a=" + JSON.stringify(list)
         }
     function del(id) {
         list.splice(id, 1)
         show()
     }
+    function edit(id) {
+            let title = document.querySelectorAll(".updateTitle")[id].value
+            let description = document.querySelectorAll(".updateDescription")[id].value
+            
+            list[id] = {title, description}
+            show()
+        }
+
+        console.log(JSON.stringify(list))
+
+        function SetCookie( strName, strValue, iSecond )
+		{
+			var strCookie = strName + "=" + encodeURIComponent(strValue);
+			if( typeof iSecond === "number" )
+			{
+				strCookie += "; max-age=" + iSecond;
+			}
+
+			// QQQ: path, domain 유효범위를 설정하고 싶으면 여기서 strCookie 변수에 추가해 주어야 한다.
+
+			document.cookie = strCookie;
+		}
+        const strList = JSON.stringify(list)
+        
+        
+
+
+
+
+
+
+        
+
 </script>
 </body>
 </html>
