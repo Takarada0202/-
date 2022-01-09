@@ -31,6 +31,10 @@
     
     
     <script>
+        if(document.cookie == '') {
+            document.cookie = 'a=[]'
+        }
+
         const cookieValue = document.cookie
         .split('; ')
         .find(row => row.startsWith('a'))
